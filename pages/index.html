@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <!-- Control the page's dimensions and scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii art web</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/styles/master.css">
+</head>
+{{if .DarkMode}}
+<body class="dark">
+{{else}}
+<body>
+{{end}}
+
+    <a class="dark-mode-button" href="/dark-mode">
+        {{if .DarkMode}}
+            <i class='bx bxs-sun' ></i>
+        {{else}}
+            <i class='bx bxs-moon' ></i>
+        {{end}}
+    </a>
+
+        <h1>Ascii Art Web</h1>
+
+        <form action="/ascii-art" method="post">
+            <textarea name="text" rows="9" cols="50" placeholder="Enter your text here..." maxlength="2000" required></textarea>
+
+            <div class="select">
+                <div class="banner-holder">
+                    <input type="radio" id="standard" name="banner" value="standard" checked>
+                    <label for="standard">standard</label>
+                </div>
+                <div class="banner-holder">
+                    <input type="radio" id="shadow" name="banner" value="shadow">
+                    <label for="shadow">shadow</label>
+                </div>
+                <div class="banner-holder">
+                    <input type="radio" id="thinkertoy" name="banner" value="thinkertoy">
+                    <label for="thinkertoy">thinkertoy</label>
+                </div>
+            </div>
+
+
+            <input type="submit" value="Submit"> 
+        </form>
+
+    <div class="result">
+        {{if .Error}}
+            <div class="error-holder">
+                <div class="error">
+                    {{.Error}}
+                </div>
+                <i class='bx bxs-error-alt error-icon'></i>
+            </div>
+        {{end}}
+        {{if .Ascii_art}}
+        <div class="ascii-text-holder">
+            <pre>{{.Ascii_art}}</pre>
+        </div>
+        {{end}}
+    </div>
+
+</body>
+</html>

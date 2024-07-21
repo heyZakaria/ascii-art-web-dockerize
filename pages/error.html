@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Code}} - Error</title>
+    <link rel="stylesheet" href="/static/styles/master.css">
+    <link rel="stylesheet" href="/static/styles/error.css">
+</head>
+{{if .DarkMode}}
+<body class="dark">
+{{else}}
+<body>
+{{end}}
+    <div class="error-container">
+        <div class="image">
+            <img src="/static/media/error.png" alt="error image">
+        </div>
+    
+        <div class="error-msg">
+            {{.Msg}} - {{.Code}}
+        </div>
+        {{if ne .Code 500}}
+            <a href="/" class="home-link">Back To Home</a>
+        {{end}}
+    </div>
+</body>
+</html>
